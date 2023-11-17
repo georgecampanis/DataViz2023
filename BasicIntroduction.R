@@ -172,10 +172,17 @@ x <- 0
 typeof(x)
 as.logical(x)
 
+#list vs vector
+(av= vector(1,2,TRUE))
+(al=list(1,2,TRUE))
 
 ############################################
 # apply(), lapply(), sapply(), tapply()
 # https://www.guru99.com/r-apply-sapply-tapply.html
+
+
+
+
 
 # apply(X, MARGIN, FUN)
 # Here:
