@@ -173,7 +173,7 @@ typeof(x)
 as.logical(x)
 
 ##############################################
-#  Vectors, Lists, Matrix, Array, DataTable
+#  Vectors, Lists, Matrix, Array, DataFrame
 # https://resbaz.github.io/2014-r-materials/lessons/01-intro_r/data-structures.html
 ##############################################
 typeof() # what is it?
@@ -182,12 +182,16 @@ length() # how long is it? What about two dimensional objects?
 attributes() # does it have any metadata?
 
 ##############################################
-#  Vectors
+#  Vectors / Lists
 ##############################################
 
 # A vector is the most common and basic data structure in R and is pretty much the workhorse of R. Vectors can be of two types:
 # 1. atomic vectors
 # 2. lists
+
+##########
+# VECTORS 
+##########
 
 # Atomic Vectors A vector can be a vector of characters, logical, integers or numeric.
 x <- c(1, 2, 3)
@@ -203,6 +207,26 @@ z <- c(x, 4)
 
 #Vectors may only have one type
 xx <- c(1.7, "a")
+
+##########
+# LISTS 
+##########
+# In R lists act as containers. Unlike atomic vectors, its contents are not restricted to a single mode and can encompass any data type. 
+# Lists are sometimes called recursive vectors, because a list can contain other lists. This makes them fundamentally different from atomic vectors.
+
+# List is a special vector. Each element can be a different class.
+# Create lists using list or coerce other objects using as.list()
+
+x <- list(1, "a", TRUE, 1+4i)
+x <- 1:10
+x <- as.list(x)
+length(x)
+
+temp <- list(list(list(list())))
+temp
+(is.recursive(temp))
+
+
 
 #list vs vector
 (av= vector(1,2,TRUE))
@@ -241,13 +265,62 @@ cbind(x,y)
 # or
 rbind(x,y)
 
+##############################################
+#  DataFrames
+#  A data frame is a very important data type in R. It's pretty much the de facto data structure for most tabular data and what we use for statistics.
+#  data frames can have additional attributes such as rownames().
+##############################################
+# Data frames Usually created by read.csv and read.table.
+# Create with data.frame() function.
+# Convert to matrix with data.matrix()
+
+(df = data.frame(id = letters[1:10], x = 1:10, y = rnorm(10)))
+
+# naming cols
+x <- 1:3
+names(x) <- c("rich", "daniel", "diego")
+x
+
+x <- as.list(1:10)
+names(x) <- letters[seq(x)]
+x
+
+m <- matrix(1:4, nrow = 2)
+dimnames(m) <- list(c("a", "b"), c("c", "d"))
+# first element = rownames
+# second element = colnames
+
+############################################
+# Missing values
+# denoted by NA and/or NaN for undefined mathematical operations.
+############################################
+
+# missing values are represented by the symbol NA (not available). Impossible values (e.g., dividing by zero) are represented by the symbol NaN (not a number)
+
+# is.na()
+# is.nan()
+# always check both
+
+x <- c(1,2, NA, 4, 5)
+is.na(x) returns logical. shows third
+is.nan(x) # none are NaN.
+
+x <- c(1,2, NA, NaN, 4, 5)
+is.nan(x) 
+
+############################################
+# Helpful Fns
+############################################
+# str() Compactly display the internal structure of an R object. Perhaps the most uesful diagnostic function in R.
+# names() Names of elements within an object
+# class() Retrieves the internal class of an object
+# length() Retrieve or set the dimension of an object.
+# dim() Retrieve or set the dimension of an object.
+
 
 ############################################
 # apply(), lapply(), sapply(), tapply()
 # https://www.guru99.com/r-apply-sapply-tapply.html
-
-
-
 
 
 # apply(X, MARGIN, FUN)
@@ -265,7 +338,7 @@ a_m1 <- apply(m1, 2, sum)
 a_m1
 
 ######################################
-# List Apply
+# L Apply (Lists)
 #####################################
 #   lapply(X, FUN)
 #   Arguments:
@@ -277,7 +350,7 @@ movies_lower <-lapply(movies, tolower)
 str(movies_lower)
 
 ######################################
-# S Apply
+# S Apply (Vectors)
 #####################################
 # same job as lapply() function but returns a vector.
 #   sapply(X, FUN)
@@ -295,7 +368,7 @@ lmn_cars
 smn_cars
 
 ######################################
-# T Apply
+# T Apply (Factors)
 #####################################
 # tapply() computes a measure (mean, median, min, max, etc..) or a function for each factor variable in a vector.
 
