@@ -39,7 +39,7 @@ sin(pi / 2)
 
 # var assignment
 x <- 3 * 4
-x = 3 * 4
+(x = 3 * 4)
 
 # display var
 x
@@ -50,11 +50,16 @@ seq(1, 10)
 
 # enclose in parentheses to display automatically after assignment
 (y <- seq(1, 10, length.out = 5))
+(z= seq(5,15,length.out = 10))
+(z= seq(5,15,length.out = 10))
+y
 
 ?seq()
 ?sd()
 
 # press  Alt + Shift + K and see what happens
+# Use ESC to reset console command line
+
 
 library(nycflights13)
 library(tidyverse)
@@ -74,7 +79,8 @@ flights # data type is a tibble ---more on this later
 # view flights and Iris dataset in RStudio Viewer
 View(flights)
 View(iris)
-
+View(y)
+yt=as.data.frame(y)
 # R var types
 #  int stands for integers.
 #  dbl stands for doubles, or real numbers.
@@ -85,18 +91,22 @@ View(iris)
 #  date stands for dates.
 
 
-
-
 # https://statsandr.com/blog/data-types-in-r/
 # c is used in R to concatenate 
 num_data <- c(3, 7, 2)# numeric series without decimals
 # Combine Values Into A Vector Or List
 # Try run it....https://www.rdocumentation.org/packages/base/versions/3.6.2/topics/c
 
+str_data = c("apple", "orange","banana")
+typeof(str_data)
+
+int_data <- c(3L, 7L, 2L)
+typeof(int_data)
 
 class(num_data) # identifies class of data
-
 typeof(num_data) # to get data type
+
+class(str_data) # identifies class of data
 
 num_data_dec <- c(3.4, 7.1, 2.9)
 class(num_data_dec)
@@ -104,7 +114,12 @@ class(num_data_dec)
 str(num_data_dec)
 
 int_nums = as.integer(num_data_dec)# convert data types
+class(int_nums)
+str(int_nums)
 
+
+df_nums = as.data.frame(num_data_dec)# convert data types
+View(df_nums)
 ###################################
 # Chars
 #################################
@@ -113,6 +128,9 @@ char
 class(char)
 
 numAsChar= as.character(int_nums)
+numAsChar+34
+num_data_dec +34
+
 
 # case and space sensitivity 
 char_space <- "text "
@@ -170,7 +188,18 @@ greater_num
 # also we can take an int and get a logical
 x <- 0
 typeof(x)
-as.logical(x)
+(as.logical(x))
+
+x <- 10
+typeof(x)
+(as.logical(x))
+
+x <- -0
+typeof(x)
+(as.logical(x))
+
+### Start here next class
+#
 
 ##############################################
 #  Vectors, Lists, Matrix, Array, DataFrame
