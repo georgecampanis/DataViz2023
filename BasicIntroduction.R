@@ -172,9 +172,75 @@ x <- 0
 typeof(x)
 as.logical(x)
 
+##############################################
+#  Vectors, Lists, Matrix, Array, DataTable
+# https://resbaz.github.io/2014-r-materials/lessons/01-intro_r/data-structures.html
+##############################################
+typeof() # what is it?
+class() # what is it? 
+length() # how long is it? What about two dimensional objects?
+attributes() # does it have any metadata?
+
+##############################################
+#  Vectors
+##############################################
+
+# A vector is the most common and basic data structure in R and is pretty much the workhorse of R. Vectors can be of two types:
+# 1. atomic vectors
+# 2. lists
+
+# Atomic Vectors A vector can be a vector of characters, logical, integers or numeric.
+x <- c(1, 2, 3)
+(2 * x)
+
+typeof(x)
+length(x)
+class(x)
+str(x)
+
+# add elements
+z <- c(x, 4)
+
+#Vectors may only have one type
+xx <- c(1.7, "a")
+
 #list vs vector
 (av= vector(1,2,TRUE))
 (al=list(1,2,TRUE))
+#We can use unlist() to convert the list into a vector.
+(alf=list("apples","pears","strawberry"))
+
+# check if it is a vector
+is.atomic(alf)
+
+# check if it is a list
+is.list(al)
+
+##############################################
+#  Matrices (A Matrix)
+#  Matrices are a special vector in R. They are not a separate class of object but simply a vector but now with dimensions added on to it. Matrices have rows and columns.
+##############################################
+
+(m <- matrix(nrow = 2, ncol = 2))
+dim(m)
+same as
+attributes(m)
+
+# Matrices are constructed columnwise
+(m <- matrix(1:6, nrow=2, ncol =3))
+
+# other ways to construct matrix
+m <- 1:10
+dim(m) <- c(2,5)
+
+
+# combinning rows and/or cols
+x <- 1:3
+y <- 10:12
+cbind(x,y)
+# or
+rbind(x,y)
+
 
 ############################################
 # apply(), lapply(), sapply(), tapply()
