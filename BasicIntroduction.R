@@ -194,12 +194,14 @@ x <- 10
 typeof(x)
 (as.logical(x))
 
-x <- -0
+x <- -0 ## Quiz Question
 typeof(x)
 (as.logical(x))
 
-### Start here next class
-#
+(as.logical(10))
+
+
+
 
 ##############################################
 #  Vectors, Lists, Matrix, Array, DataFrame
@@ -223,19 +225,22 @@ attributes() # does it have any metadata?
 ##########
 
 # Atomic Vectors A vector can be a vector of characters, logical, integers or numeric.
-x <- c(1, 2, 3)
+x <- c(1, 2, 3,10,5)
 (2 * x)
 
 typeof(x)
 length(x)
 class(x)
 str(x)
-
+x[0] ## Quiz Question
 # add elements
 z <- c(x, 4)
+z <- c(x, 19,21)
 
 #Vectors may only have one type
 xx <- c(1.7, "a")
+(xx <- c(1, TRUE))
+
 
 ##########
 # LISTS 
@@ -246,11 +251,12 @@ xx <- c(1.7, "a")
 # List is a special vector. Each element can be a different class.
 # Create lists using list or coerce other objects using as.list()
 
-x <- list(1, "a", TRUE, 1+4i)
+(x <- list(1, "a", TRUE, 1+4i))
 x <- 1:10
 x <- as.list(x)
 length(x)
 
+x[3]
 temp <- list(list(list(list())))
 temp
 (is.recursive(temp))
@@ -276,21 +282,28 @@ is.list(al)
 
 (m <- matrix(nrow = 2, ncol = 2))
 dim(m)
-same as
+##same as
 attributes(m)
 
 # Matrices are constructed columnwise
 (m <- matrix(1:6, nrow=2, ncol =3))
-
+(m <- matrix(1:9, nrow=3, ncol =3))
 # other ways to construct matrix
+
+
 m <- 1:10
+m
+
 dim(m) <- c(2,5)
 
-
-# combinning rows and/or cols
+m
+# combining rows and/or cols
 x <- 1:3
 y <- 10:12
-cbind(x,y)
+x
+y
+
+(cbind(x,y))
 # or
 rbind(x,y)
 
@@ -314,25 +327,30 @@ x <- as.list(1:10)
 names(x) <- letters[seq(x)]
 x
 
-m <- matrix(1:4, nrow = 2)
+(m <- matrix(1:4, nrow = 2))
+(m <- matrix(1:10, nrow = 2))
+(m <- matrix(1:10))
+(m <- matrix(1:10, ncol = 2))
 dimnames(m) <- list(c("a", "b"), c("c", "d"))
 # first element = rownames
 # second element = colnames
-
+m
 ############################################
 # Missing values
 # denoted by NA and/or NaN for undefined mathematical operations.
 ############################################
 
-# missing values are represented by the symbol NA (not available). Impossible values (e.g., dividing by zero) are represented by the symbol NaN (not a number)
+# missing values are represented by the symbol NA (not available). 
+# Impossible values (e.g., dividing by zero) are represented by the symbol NaN (not a number)
 
 # is.na()
 # is.nan()
 # always check both
 
 x <- c(1,2, NA, 4, 5)
-is.na(x) returns logical. shows third
+is.na(x) #returns logical. shows third
 is.nan(x) # none are NaN.
+
 
 x <- c(1,2, NA, NaN, 4, 5)
 is.nan(x) 
@@ -365,6 +383,9 @@ m1 <- matrix(C<-(1:10),nrow=5, ncol=6)
 m1
 a_m1 <- apply(m1, 2, sum)
 a_m1
+a_m1 <- apply(m1, 1, sum)
+a_m1
+
 
 ######################################
 # L Apply (Lists)
@@ -412,6 +433,9 @@ tapply(iris$Sepal.Width, iris$Species, median)
 
 # => https://statsandr.com/blog/descriptive-statistics-in-r/
 # stats summary 
+
+### Start here ===>
+
 
 dat <- iris # load the iris dataset and renamed it dat
 
