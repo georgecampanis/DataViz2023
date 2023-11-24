@@ -386,6 +386,8 @@ a_m1
 a_m1 <- apply(m1, 1, sum)
 a_m1
 
+a_m1 <- apply(m1, c(1,2), sum)
+a_m1
 
 ######################################
 # L Apply (Lists)
@@ -434,7 +436,7 @@ tapply(iris$Sepal.Width, iris$Species, median)
 # => https://statsandr.com/blog/descriptive-statistics-in-r/
 # stats summary 
 
-### Start here ===>
+
 
 
 dat <- iris # load the iris dataset and renamed it dat
@@ -475,8 +477,18 @@ fnRange = function(x) {
   return(range)
 }
 
+
 fnRange(dat$Sepal.Length)
 fnRange(dat$Petal.Length)
+
+fnDivideByTwo = function(x) {
+  d <- x/2.0
+  return(d)
+}
+
+a_m1 <- apply(m1, c(1,2), fnDivideByTwo)
+a_m1
+
 
 ##################################
 #  Standard deviation and variance
@@ -488,8 +500,11 @@ variance= (sd(dat$Sepal.Length))^2
 stdDev = sqrt(variance)
 # computed using sample formulae i.e. n-1
 
-o=lapply(dat[, 1:4], sd)
+o=lapply(dat[,1:4], sd)
 o[4]
+
+
+(d=dat[1:5,1:2])
 
 head(dat)
 summary(dat)
