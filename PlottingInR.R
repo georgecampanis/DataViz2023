@@ -26,7 +26,17 @@ library(gapminder)
 #       Histograms/Bar Charts
 ###################################
 hist(mtcars$mpg)
-ggplot(mpg, aes(class)) + geom_bar()
+View(mtcars)
+ggplot(mpg, aes(class)) +
+    geom_bar() 
+
+ggplot(mtcars, aes(mpg)) +
+  geom_histogram(bins=7) 
+
+
+ggplot(mtcars, aes(mpg))+
+  geom_freqpoly(bins = 10)
+
 ###################################
 #       Kernel Density Plots
 ###################################
@@ -34,6 +44,8 @@ d <- density(mtcars$mpg) # returns the density data
 plot(d) # plots the results
 
 ggplot(diamonds, aes(carat)) +  geom_density()
+
+View(diamonds)
 ###################################
 #       Line Charts
 ###################################
@@ -43,7 +55,9 @@ plot(v,type = "o")
 df <- data.frame(dose=c("D0.5", "D1", "D2"),
                  len=c(4.2, 10, 29.5))
 #ToothGrowth describes the effect of Vitamin C on tooth growth in Guinea pigs.
-ggplot(data=df, aes(x=dose, y=len, group=1)) +  geom_line()+  geom_point()
+ggplot(data=df, aes(x=dose, y=len, group=1)) +  
+  geom_line()+  
+  geom_point()
 
 ###################################
 #       Pie Charts
@@ -60,10 +74,10 @@ pie + coord_polar(theta = "y")
 #       Scatter Plots
 ###################################
 #attach(mtcars)
-plot(wt, mpg, main="Scatterplot Example",
-     xlab="Car Weight ", ylab="Miles Per Gallon ", pch=19)
+plot(mtcars$wt, mtcars$mpg, main="Scatterplot Example",
+     xlab="Car Weight ", ylab="Miles Per Gallon ", pch=12)
 
-p <- ggplot(mtcars, aes(wt, mpg))
+p <- ggplot(mtcars, aes(x=wt, y=mpg))
 p + geom_point()
 ###################################
 #       Box and Whisker Plots
