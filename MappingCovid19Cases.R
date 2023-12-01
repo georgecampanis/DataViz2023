@@ -1,5 +1,5 @@
 
-install.packages("RODBC")
+#install.packages("RODBC")
 library(RODBC)
 library(tidyverse)
 
@@ -8,7 +8,7 @@ dbconnection = odbcDriverConnect('driver={SQL Server};server=ML-RefVm-361229;dat
 # cases
 covid.casedata <- sqlQuery(dbconnection,paste("select * from cases;"))
 
-
+glimpse(covid.casedata)
 
 #pop data
 covid.popdata <- sqlQuery(dbconnection,paste("select * from PopulationData;"))

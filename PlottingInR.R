@@ -179,8 +179,8 @@ p + geom_point(color = "purple") +
 p <- ggplot(data = gapminder,
             mapping = aes(x = gdpPercap,
                           y = lifeExp)) 
-p + geom_point(alpha = 0.3) +
-  geom_smooth(color = "orange", se = FALSE, size = 8, method = "lm") +
+p +   geom_smooth(color = "orange", se = FALSE, size = 8, method = "lm") +
+  geom_point(alpha = 0.3) +
   scale_x_log10()
 ###############################################
 
@@ -272,7 +272,7 @@ p <- ggplot(data = gapminder, mapping = aes(x = year, y = gdpPercap))
 p + geom_line(color="gray70", aes(group = country)) +
   geom_smooth(size = 1.1, method = "loess", se = FALSE) +
   scale_y_log10(labels=scales::dollar) +
-  facet_wrap(~ continent, ncol = 3) + # this line sets the cols =5
+  facet_wrap(~ continent, ncol = 5) + # this line sets the cols =5
   labs(x = "Year",
        y = "GDP per capita",
        title = "GDP per capita on Five Continents")
@@ -466,6 +466,7 @@ p + geom_col() + guides(fill = FALSE) +
 library(nycflights13)
 library(dplyr)
 
+
 ####################
 #    filter
 ###################
@@ -473,6 +474,7 @@ library(dplyr)
 alaska_flights <- flights %>% 
   filter(carrier == "AS")
 
+View(flights)
 
 portland_flights <- flights %>% 
   filter(dest == "PDX")
@@ -489,7 +491,7 @@ btv_sea_flights_fall <- flights %>%
 
 
 # %IN%
-#filter(dest %in% c("SEA", "SFO", "PDX", "BTV", "BDL"))
+myd=flights %>% filter(dest %in% c("SEA", "SFO", "PDX", "BTV", "BDL"))
 
 ####################
 #    summarize
