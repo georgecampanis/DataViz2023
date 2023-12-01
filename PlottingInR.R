@@ -458,6 +458,7 @@ p + geom_col() + guides(fill = FALSE) +
                    average life expectancies, 1960-2015",
        caption = "Data: OECD. After a chart by Christopher Ingraham,
                   Washington Post, December 27th 2017.")
+
 #######################################################
 ## DATA WRANGLING
 # dplyr
@@ -966,3 +967,4 @@ p + geom_point() +
   labs(x = "Road Deaths",
        y = "Donor Procurement") +
   theme(legend.position = "top")
+
